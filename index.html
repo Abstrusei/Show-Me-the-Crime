@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Crime statistics page">
+    <meta name="keywords" content="crime, statistics">
+    <meta name="author" content="Anthony Chiam, Aaron Yue, Daniel Morgan, Lachlan Benson, Sean Marshall">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Show Me The Crime | Home</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Fonts (GoogleFonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Select2 -Dropdown -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+    <!-- Leaflet -Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" 
+        crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+    <!-- Esri Leaflet (ArcGIS services) -->
+    <script src="https://unpkg.com/esri-leaflet@2.5.1/dist/esri-leaflet.js"
+        integrity="sha512-q7X96AASUF0hol5Ih7AeZpRF6smJS55lcvy+GLWzJfZN+31/BQ8cgNx2FGF+IQSA4z2jHwB20vml+drmooqzzQ=="
+        crossorigin=""></script>
+
+    <!-- Esri Leaflet - Geocoder Control -->
+    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.css"
+        integrity="sha512-IM3Hs+feyi40yZhDH6kV8vQMg4Fh20s9OzInIIAc4nx7aMYMfo+IenRUekoYsHZqGkREUgx0VvlEsgm7nCDW9g=="
+        crossorigin="">
+    <script src="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.js"
+        integrity="sha512-HrFUyCEtIpxZloTgEKKMq4RFYhxjJkCiF5sDxuAokklOeZ68U2NPfh4MFtyIVWlsKtVbK5GD2/JzFyAfvT5ejA=="
+        crossorigin=""></script>
+
+    <!-- Geosearch -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css">
+    <script src="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.umd.js"></script>
+
+
+    <!-- Website Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Dataset -->
+    <script src="js/dataset.js"></script>
+
+    <!-- Map -->
+    <link rel="stylesheet" href="css/map.css">
+    <script src="js/map-script.js"></script>
+
+    <!-- Bubble Visualisation -->
+    <link rel="stylesheet" href="css/bubble.css">
+    <script src="js/bubbles.js"></script>
+
+    <!-- Script File -->
+    <script src="js/homepage.js"></script>
+    <script src="js/utility.js"></script>
+
+
+</head>
+<body class="content">
+
+    <!-- Loading Spinner -->
+    <div id="loading-container">
+        <div id="loading"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav id="main-menu" class="sm-column">
+        <div class="logo flex center-y">
+            <h1><a href="index.html">Show Me The Crime</a></h1>
+        </div>
+
+        <ul class="flex center-y">
+            <li class="current"><a href="index.html">Home</a></li>
+            <li><a href="filter.html">Filter</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+    <div class="top_bar" id="homepage_bar">
+        <div id="right">
+            <a href="#" onclick="Hide(homepage_bar);">X</a>
+        </div>
+        <div id="left">
+            <b>Click</b> anywhere on the <b>map</b> and watch the bubbles transform! <a href="#faq-top">Click me to read more!</a>
+        </div>
+    </div>
+
+    <div id="content-container">
+
+        <!-- Map -->
+        <div id="map-container">
+            <div id="map" class="beforeCollapse"></div>
+
+            <!-- 0 6 7 1-->
+            <!-- 4 10 11 5-->
+            <!-- 2 8 9 3-->
+            <div>
+                <div id="vl"></div>
+                <div id="triangle"></div>
+            </div>
+        </div>
+        <div id="toolbox">
+            <h3 class="bubble_toolbar_text">Current LGA: </h3><span id="current_lga">Brisbane City Council</span>
+            <h3 class="bubble_toolbar_text">Date: </h3><span id="current_date">NOV19</span>
+        </div>
+        <!-- Bubbles -->
+        <div class="bubbles-container bubbles-container-width">
+            <div id="#no-bubbles-container-1" class="no-bubbles-container">
+                <div id="no-bubbles-1" class="no-height no-bubbles">
+                    <div id="no-bubbles-text-1" class="no-height no-bubbles-text">
+                        This LGA does not have any data to be shown, please
+                        select a different LGA
+                    </div>
+                </div>
+            </div>
+            <div class="bubble-row front-row">
+                <!--                <img src="images/gradients/purple.png" height="1417" width="1890"/>-->
+                <div class="top-left bubble0-1 bubble-1 " id="bubble_0-1">
+                    <span class="bubble-text" id="bubble-text_0-1"></span>
+                </div>
+                <div class="middle-top bubble6-1 bubble-1 " id="bubble_1-1">
+                    <span class="bubble-text" id="bubble-text_6-1"></span>
+                </div>
+                <div class="middle-top bubble7-1 bubble-1 " id="bubble_2-1">
+                    <span class="bubble-text" id="bubble-text_7-1"></span>
+                </div>
+                <div class="top-right bubble1-1 bubble-1 " id="bubble_3-1">
+
+                    <span class="bubble-text" id="bubble-text_1-1"></span>
+                </div>
+            </div>
+
+            <div class="bubble-row middle-row">
+                <div class="middle-left bubble4-1 bubble-1 " id="bubble_4-1">
+                    <span class="bubble-text" id="bubble-text_4-1"></span>
+                </div>
+                <div class="middle-middle bubble10-1 bubble-1 " id="bubble_5-1">
+                    <span class="bubble-text" id="bubble-text_10-1"></span>
+                </div>
+                <div class="middle-middle bubble11-1 bubble-1 " id="bubble_6-1">
+
+                    <span class="bubble-text" id="bubble-text_11-1"></span>
+                </div>
+                <div class="middle-right bubble5-1 bubble-1 " id="bubble_7-1">
+                    <div id="popup">
+                        <div id="popup-content" class="popup"><strong>Hover over me!</strong></div>
+                    </div>
+                    <!--                    Class number for bubble nunber. This is just for the JavaScript (popup)-->
+                    <div id="popup-separator" class="5">
+                        <span class="bubble-text" id="bubble-text_5-1"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bubble-row bottom-row">
+                <div class="bottom-left bubble2-1 bubble-1 " id="bubble_8-1">
+                    <span class="bubble-text" id="bubble-text_2-1"></span>
+                </div>
+                <div class="middle-bottom bubble8-1 bubble-1 " id="bubble_9-1">
+                    <span class="bubble-text" id="bubble-text_8-1"></span>
+                </div>
+                <div class="middle-bottom bubble9-1 bubble-1 " id="bubble_10-1">
+                    <span class="bubble-text" id="bubble-text_9-1"></span>
+                </div>
+                <div class="bottom-right bubble3-1 bubble-1 " id="bubble_11-1">
+                    <span class="bubble-text" id="bubble-text_3-1"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="faq-section">
+        <div id="faq-top">
+            <h1>What do the bubbles mean?</h1>
+            <p>The bubbles represent crimes per 100 000 persons. For example, if there are 582 Offences Against Property, then 582 in 100 000 persons have committed this offence.</p>
+        </div>
+        <div id="faq-bottom">
+            <h1>What do the colours mean?</h1>
+            <p>The colours are for visual aesthetics. There is no meaning behind them, they are there to look pretty.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="page-footer" class="pad-top pad-bottom">
+        <div class="container">
+            <h3 class="pad-bottom">Show Me The Crime</h3>
+
+            <!-- Footer menu -->
+            <nav>
+                <ul class="flex sm-column">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="coming-soon.html">Map</a></li>
+                    <li><a href="filter.html">Filter</a></li>
+                    <li><a href="coming-soon.html">Terms & Conditions</a></li>
+                    <li><a href="coming-soon.html">Sitemap</a></li>
+                </ul>
+            </nav>
+
+            <!-- Social Media Icons -->
+            <div id="social-media-icons" class="pad-bottom flex">
+                <!-- Icon 1 -->
+                <a href="https://www.facebook.com" target="_blank">
+                    <div class="icon" style="background-image: url(images/facebook-logo.png);"></div>
+                </a>
+
+                <!-- Icon 2 -->
+                <a href="https://www.instagram.com" target="_blank"> 
+                    <div class="icon" style="background-image: url(images/instagram-logo.png);"></div>
+                </a>
+
+                <!-- Icon 3 -->
+                <a href="https://www.twitter.com" target="_blank">
+                    <div class="icon" style="background-image: url(images/twitter-logo.png);"></div>
+                </a>
+            </div>
+
+            <p class="pad-top">©2020 Show Me The Crime. A site by UFC02-T01</p>
+        </div>
+
+    </footer>
+</body>
+</html>

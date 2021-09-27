@@ -1,0 +1,64 @@
+* {
+	box-sizing: border-box;
+}
+
+#content-container {
+	display: grid;
+	grid-template-columns: min-content 57vw;
+	grid-template-rows: min-content min-content;
+	transition: all ease-in-out 0.5s;
+	overflow: scroll;
+}
+
+#map-container {
+	grid-area: 1 / 1 / 3 / 2;
+	display: grid;
+	grid-template-columns: min-content min-content;
+	z-index: 0;
+}
+
+#map {
+	height: calc(100vh + 46px);
+	/* Uses viewport (vw & vh) units: https://css-tricks.com/fun-viewport-units */
+	background-color: white;
+	box-shadow: rgba(0,0,0,0.5) 0 5px 10px;
+	grid-area: 1 / 1 / 2 / 2;
+	transition: width ease-in-out 0.5s
+}
+
+#vl {
+	border-left: 1.3vw solid #474747;
+	height: calc(100vh + 46px);
+	/*position: absolute;*/
+	/*left: 40vw;*/
+	top: 0;
+	grid-area: 1 / 2 / 2 / 3;
+	cursor: pointer;
+	position: relative;
+}
+
+#triangle {
+	position: absolute;
+	background-image: url("../images/left-triangle.png");
+	background-size: cover;
+	height: 1.8vh;
+	width: 2vh;
+	top: 70%;
+	margin-left: 2px;
+	cursor: pointer;
+	transition: all ease-in-out 0.5s;
+}
+
+.flip-180 {
+	transform: rotateY(180deg);
+}
+
+.collapse {
+	width: 0 !important;
+	/*height: 0; !important;*/
+	/*transition: width ease-in-out 0.5s*/
+}
+
+.beforeCollapse {
+	width: 40vw;
+}

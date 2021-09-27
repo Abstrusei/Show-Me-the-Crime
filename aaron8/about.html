@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Crime statistics page">
+    <meta name="keywords" content="crime, statistics">
+    <meta name="author" content="Anthony Chiam, Aaron Yue, Daniel Morgan, Lachlan Benson, Sean Marshall">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Show Me The Crime | About</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Fonts (GoogleFonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Website Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body class="content">
+
+    <!-- Navigation Bar -->
+    <nav id="main-menu" class="sm-column">
+        <div class="logo flex center-y">
+            <h1><a href="index.html">Show Me The Crime</a></h1>
+        </div>
+
+        <ul class="flex center-y">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="filter.html">Filter</a></li>
+            <li class="current"><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- About us section goes here. Possible features: FAQ, accordion, contact form section -->
+    <!-- Page Banner -->
+    <section class="banner bg-img flex bottom-y" style="background-image: url(images/police-car.jpg); background-position: 0% 20%; position: relative;">
+      <div class="flex bottom-y overlay" style="position: absolute;">
+          <h1 class="container">About Us</h1>
+      </div>
+    </section>
+
+    <!-- Our Cause and Link to Dataset -->
+    <article class="container">
+        <h1 class="pad-top pad-bottom">Why do we do what we do?</h1>
+
+        <p class="small-pad-bottom">Bar charts, graphs and tables aren’t always very interesting or clear. That’s where we come along. Instead, we present information using vibrant and colourful bubbles of varying sizes. Our goal is to give Queenslanders easily digestible and clearly presented location-based crime statistics. Whether it be out of curiosity or an interest in relocating, we think it is important that Queenslanders know what is going on around them. 
+        </p>
+
+        <p class="pad-bottom">
+            Our unique bubble system is achieved using data from the Queensland Police Service. In particular, reported offence rates per 100,000 persons (population) by Local Government Area (LGA) and crime type. This dataset can be accessed below.
+        </p>
+        
+        <a href="https://www.data.qld.gov.au/dataset/lga_reported_offences_rates" target="_blank" class="btn">View Dataset</a>
+
+    </article>
+
+    <!-- User Form -->
+    <section class="pad-top pad-bottom">
+        <div class="container">
+            <h1 class="pad-top pad-bottom">Have Any Questions?</h1>
+            <form id="contactform" method="post" action="php/send.php" class="flex lg-column">
+    
+                <label for="fname">Full Name</label>
+                <input type="text" id="fname" name="fullname" placeholder="Your first and last name" required>
+    
+                <label for="email">Email</label>
+                <input type="email" id="email" name="emailaddress" placeholder="Your email address" required>
+    
+                <label for="subject">Question</label>
+                <textarea id="subject" name="subject" placeholder="Write something you would like to ask us"
+                    style="height:100px" required></textarea>
+    
+                <input type="submit" value="Submit" class="btn" id="submit-btn">
+    
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="page-footer" class="pad-top pad-bottom">
+        <div class="container">
+            <h3 class="pad-bottom">Show Me The Crime</h3>
+
+            <!-- Footer menu -->
+            <nav>
+                <ul class="flex sm-column">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="coming-soon.html">Map</a></li>
+                    <li><a href="filter.html">Filter</a></li>
+                    <li><a href="coming-soon.html">Terms & Conditions</a></li>
+                    <li><a href="coming-soon.html">Sitemap</a></li>
+                </ul>
+            </nav>
+
+            <!-- Social Media Icons -->
+            <div id="social-media-icons" class="pad-bottom flex">
+                <!-- Icon 1 -->
+                <a href="https://www.facebook.com" target="_blank">
+                    <div class="icon" style="background-image: url(images/facebook-logo.png);"></div>
+                </a>
+
+                <!-- Icon 2 -->
+                <a href="https://www.instagram.com" target="_blank"> 
+                    <div class="icon" style="background-image: url(images/instagram-logo.png);"></div>
+                </a>
+
+                <!-- Icon 3 -->
+                <a href="https://www.twitter.com" target="_blank">
+                    <div class="icon" style="background-image: url(images/twitter-logo.png);"></div>
+                </a>
+            </div>
+
+            <p class="pad-top">©2020 Show Me The Crime. A site by UFC02-T01</p>
+        </div>
+
+    </footer>
+
+</body>
+</html>

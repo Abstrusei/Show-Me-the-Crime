@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Crime statistics page">
+    <meta name="keywords" content="crime, statistics">
+    <meta name="author" content="Anthony Chiam, Aaron Yue, Daniel Morgan, Lachlan Benson, Sean Marshall">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Show Me The Crime | Filter</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Select2 -Dropdown -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+    <!-- Chosen -MultiSelect Dropdown Box -->
+    <link rel="stylesheet" href="css/chosen.min.css">
+    <script src="js/chosen.jquery.min.js"></script>
+
+    <!-- Website Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">  
+    <link rel="stylesheet" href="css/filter.css">
+
+    <!-- Dataset -->
+    <script src="js/dataset.js"></script>
+
+    <!-- Bubble Visualisation-->
+    <link rel="stylesheet" href="css/bubble.css">
+    <script src="js/bubbles.js"></script>
+
+    <!-- Page-specific scripts -->
+    <script src="js/filter.js"></script>
+    <script src="js/utility.js"></script>
+
+
+</head>
+
+<!-- Navigation Bar -->
+<body class="content">
+<!-- Loading Spinner -->
+<div id="loading-container">
+    <div id="loading"></div>
+</div>
+
+<nav id="main-menu" class="sm-column">
+    <div class="logo flex center-y">
+        <h1><a href="index.html">Show Me The Crime</a></h1>
+    </div>
+
+    <ul class="flex center-y">
+        <li><a href="index.html">Home</a></li>
+        <li class="current"><a href="filter.html">Filter</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
+</nav>
+
+<!-- Filter Section -->
+<section>
+    <!-- Filter by crime  -->
+<!--    <div class="dateContainer">-->
+<!--&lt;!&ndash;        <button id="refresh">Refresh!</button>&ndash;&gt;-->
+<!--        <input type="range" id="date" min="1" max="227" class="dateSlider">-->
+<!--        <span id="date-value"></span>-->
+<!--    </div>-->
+    <div class="xtra-small-pad flex sm-column" id="fltr-by-crime">
+        <h2>Select Crime</h2>
+        <div>
+            <!-- Crime Dropdown -->
+            <select id="mselect" multiple="">
+            </select>
+        </div>
+    </div>
+
+    <!-- Location Section -->
+    <div class="fltr-locations flex">
+        <!-- Location 1 -->
+        <div id="fltr-location-1" class="fltr-location sm-column">
+            <div class="xtra-small-pad flex sm-column location-section dropdown-container">
+                <h2>Select LGA</h2>
+                <!-- Location Dropdown -->
+                <select id="lga1" class="js-example-basic-single" style="width: max-content; margin-bottom: 0.5em;">
+                    <option>LGA</option>
+                </select>
+            </div>
+            <!-- Insert Bubble Space Here -->
+                <!-- Bubbles -->
+            <div class="bubbles-container double-bubbles-container-width">
+                <div id="#no-bubbles-container-1" class="no-bubbles-container">
+                    <div id="no-bubbles-1" class="no-height no-bubbles">
+                        <div id="no-bubbles-text-1" class="no-height no-bubbles-text">
+                            This LGA does not have any data to be shown, please
+                            select a different LGA
+                        </div>
+                    </div>
+                </div>
+                <div class="bubble-row front-row">
+                    <!--                <img src="images/gradients/purple.png" height="1417" width="1890"/>-->
+                    <div class="top-left bubble0-1 bubble-1 " id="bubble_0-1">
+                        <span class="bubble-text" id="bubble-text_0-1"></span>
+                    </div>
+                    <div class="middle-top bubble6-1 bubble-1 " id="bubble_1-1">
+                        <span class="bubble-text" id="bubble-text_6-1"></span>
+                    </div>
+                    <div class="middle-top bubble7-1 bubble-1 " id="bubble_2-1">
+                        <span class="bubble-text" id="bubble-text_7-1"></span>
+                    </div>
+                    <div class="top-right bubble1-1 bubble-1 " id="bubble_3-1">
+
+                        <span class="bubble-text" id="bubble-text_1-1"></span>
+                    </div>
+                </div>
+
+                <div class="bubble-row middle-row">
+                    <div class="middle-left bubble4-1 bubble-1 " id="bubble_4-1">
+                        <span class="bubble-text" id="bubble-text_4-1"></span>
+                    </div>
+                    <div class="middle-middle bubble10-1 bubble-1 " id="bubble_5-1">
+                        <span class="bubble-text" id="bubble-text_10-1"></span>
+                    </div>
+                    <div class="middle-middle bubble11-1 bubble-1 " id="bubble_6-1">
+                        <span class="bubble-text" id="bubble-text_11-1"></span>
+                    </div>
+                    <div class="middle-right bubble5-1 bubble-1 " id="bubble_7-1">
+                            <span class="bubble-text" id="bubble-text_5-1"></span>
+                    </div>
+                </div>
+
+                <div class="bubble-row bottom-row">
+                    <div class="bottom-left bubble2-1 bubble-1 " id="bubble_8-1">
+                        <span class="bubble-text" id="bubble-text_2-1"></span>
+                    </div>
+                    <div class="middle-bottom bubble8-1 bubble-1 " id="bubble_9-1">
+                        <span class="bubble-text" id="bubble-text_8-1"></span>
+                    </div>
+                    <div class="middle-bottom bubble9-1 bubble-1 " id="bubble_10-1">
+                        <span class="bubble-text" id="bubble-text_9-1"></span>
+                    </div>
+                    <div class="bottom-right bubble3-1 bubble-1 " id="bubble_11-1">
+                        <span class="bubble-text" id="bubble-text_3-1"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compare Button -->
+        <div id="compare-btn" class="flex min-h-100">
+            <h2>Compare</h2>
+        </div>
+
+        <!-- Location 2 -->
+        <div id="fltr-location-2" class="fltr-location sm-column d-none">
+            <div class="xtra-small-pad flex sm-column location-section dropdown-container">
+                <h2>Select LGA</h2>
+                <!-- Location Dropdown -->
+                <select id="lga2" class="js-example-basic-single" style="width: max-content; margin-bottom: 0.5em;">
+                    <option>LGA</option>
+                </select>
+            </div>
+            <!-- Bubbles -->
+            <div class="bubbles-container double-bubbles-container-width">
+                <div id="#no-bubbles-container-2" class="no-bubbles-container">
+                    <div id="no-bubbles-2" class="no-height no-bubbles">
+                        <div id="no-bubbles-text-2" class="no-height no-bubbles-text">
+                            This LGA does not have any data to be shown, please
+                            select a different LGA
+                        </div>
+                    </div>
+                </div>
+                <div class="bubble-row front-row">
+                    <!--                <img src="images/gradients/purple.png" height="1417" width="1890"/>-->
+                    <div class="top-left bubble0-2 bubble-2" id="bubble_0-2">
+                        <span class="bubble-text" id="bubble-text_0-2"></span>
+                    </div>
+                    <div class="middle-top bubble6-2 bubble-2" id="bubble_1-2">
+                        <span class="bubble-text" id="bubble-text_6-2"></span>
+                    </div>
+                    <div class="middle-top bubble7-2 bubble-2" id="bubble_2-2">
+                        <span class="bubble-text" id="bubble-text_7-2"></span>
+                    </div>
+                    <div class="top-right bubble1-2 bubble-2" id="bubble_3-2">
+
+                        <span class="bubble-text" id="bubble-text_1-2"></span>
+                    </div>
+                </div>
+
+                <div class="bubble-row middle-row">
+                    <div class="middle-left bubble4-2 bubble-2" id="bubble_4-2">
+                        <span class="bubble-text" id="bubble-text_4-2"></span>
+                    </div>
+                    <div class="middle-middle bubble10-2 bubble-2" id="bubble_5-2">
+                        <span class="bubble-text" id="bubble-text_10-2"></span>
+                    </div>
+                    <div class="middle-middle bubble11-2 bubble-2" id="bubble_6-2">
+                        <span class="bubble-text" id="bubble-text_11-2"></span>
+                    </div>
+                    <div class="middle-right bubble5-2 bubble-2" id="bubble_7-2">
+                            <span class="bubble-text" id="bubble-text_5-2"></span>
+                    </div>
+                </div>
+
+                <div class="bubble-row bottom-row">
+                    <div class="bottom-left bubble2-2 bubble-2" id="bubble_8-2">
+                        <span class="bubble-text" id="bubble-text_2-2"></span>
+                    </div>
+                    <div class="middle-bottom bubble8-2 bubble-2" id="bubble_9-2">
+                        <span class="bubble-text" id="bubble-text_8-2"></span>
+                    </div>
+                    <div class="middle-bottom bubble9-2 bubble-2" id="bubble_10-2">
+                        <span class="bubble-text" id="bubble-text_9-2"></span>
+                    </div>
+                    <div class="bottom-right bubble3-2 bubble-2" id="bubble_11-2">
+                        <span class="bubble-text" id="bubble-text_3-2"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="page-footer" class="pad-top pad-bottom">
+    <div class="container">
+        <h3 class="pad-bottom">Show Me The Crime</h3>
+
+        <!-- Footer menu -->
+        <nav>
+            <ul class="flex sm-column">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="coming-soon.html">Map</a></li>
+                <li><a href="filter.html">Filter</a></li>
+                <li><a href="coming-soon.html">Terms & Conditions</a></li>
+                <li><a href="coming-soon.html">Sitemap</a></li>
+            </ul>
+        </nav>
+
+        <!-- Social Media Icons -->
+        <div id="social-media-icons" class="pad-bottom flex">
+            <!-- Icon 1 -->
+            <a href="https://www.facebook.com" target="_blank">
+                <div class="icon" style="background-image: url(images/facebook-logo.png);"></div>
+            </a>
+
+            <!-- Icon 2 -->
+            <a href="https://www.instagram.com" target="_blank">
+                <div class="icon" style="background-image: url(images/instagram-logo.png);"></div>
+            </a>
+
+            <!-- Icon 3 -->
+            <a href="https://www.twitter.com" target="_blank">
+                <div class="icon" style="background-image: url(images/twitter-logo.png);"></div>
+            </a>
+        </div>
+
+        <p class="pad-top">©2020 Show Me The Crime. A site by UFC02-T01</p>
+    </div>
+
+</footer>
+</body>
+
+
+
+</html>

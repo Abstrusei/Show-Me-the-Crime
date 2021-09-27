@@ -1,0 +1,52 @@
+.dateContainer {
+    position: relative;
+    width: calc(100% - 40px);
+    height: 40px;
+    padding-left: 40px;
+}
+
+.dateSlider {
+    position: absolute;
+    -webkit-appearance: none;
+    background: #d3d3d3;
+    width: 80%;
+    height: 10px;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.dateSlider:hover {
+    opacity: 1;
+}
+
+.dateSlider::-webkit-slider-thumb {
+    width: 30px;
+    height: 30px;
+    background: url('../favicon.ico');
+    cursor: pointer;
+    border: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    background-size: cover;
+}
+
+.dateSlider::-moz-range-thumb {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    background: url('../favicon.ico');
+    cursor: pointer;
+    background-size: cover;
+}
+
+#date-value {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 90%;
+}
