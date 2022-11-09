@@ -1,6 +1,6 @@
 # Show-Me-the-Crime
  
-The goal of this site is to keep Queenslanders informed on the dangers of their neighbourhood. However, bar charts, graphs and tables aren’t always very interesting or clear. That’s where 'Show Me the Crime' comes along. This website showcases crime statistics in a fun, vibrant and simple way. Using an algorithm, the website represents crime levels in Queensland LGAs using colourful, animated bubbles of varying sizes. The bigger the bubble, the more prevelant the crime is in that particualr LGA.
+The goal of this site is to keep Queenslanders informed on the dangers of their neighbourhood. However, bar charts, graphs and tables aren’t always very interesting or clear. That’s where 'Show Me the Crime' comes along. This website showcases crime statistics in a fun, vibrant and simple way. Using an algorithm, the website represents crime levels in Queensland LGAs using colourful, animated bubbles of varying sizes. The bigger the bubble, the more prevelant the crime is in that particualr LGA. Each bubble can also be hovered on to reveal more information.
 
 ## Different Pages on 'Show Me the Crime'
 * Home Page
