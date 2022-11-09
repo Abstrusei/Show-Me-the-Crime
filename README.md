@@ -6,7 +6,7 @@ The goal of this site is to keep Queenslanders informed on the dangers of their 
 * Home Page
     * Features crime bubbles tailored to the user's LGA (if location permission is granted). However, there are NO filtering options
 * About Page
-    * Details the purpose of the site and includes links to raw data set (where the crime statistics are being drawn from)
+    * Details the purpose of the site and includes links to the raw data set (where the crime statistics are being drawn from)
 * Filter Page
     * Features crime bubbles WITH filtering options 
                 * Ability to filter by LGA
